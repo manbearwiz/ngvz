@@ -8,6 +8,7 @@ import {
   NgvzForceDirectedModule,
   NgvzTreemapModule
 } from './lib';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import {
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     NgvzCoreModule,
     NgvzBubbleModule,
     NgvzForceDirectedModule,
