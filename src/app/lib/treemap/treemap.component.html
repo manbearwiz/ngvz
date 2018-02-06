@@ -1,3 +1,9 @@
-<p>
-  treemap works!
-</p>
+<svg [attr.width]="width" [attr.height]="height" *ngIf="nodes">
+  <g class="node" *ngFor="let l of leaves" ngvzTransform [translateX]="l.x0" [translateY]="l.y0">
+    <rect [id]="'tree-' + l.data.id" [attr.width]="l.x1 - l.x0" [attr.height]="l.y1 - l.y0" fill="rgb(76, 146, 195)" #nodeContainer></rect>
+    <text [ngvzClipPathTo]="nodeContainer">
+      <tspan x="4" *ngFor="let word of (l.data.name | splitPascalCase); index as i" [attr.y]="13 + i * 10">{{word}}</tspan>
+    </text>
+    <title>{{l.data.id}} {{l.value}}</title>
+  </g>
+</svg>
