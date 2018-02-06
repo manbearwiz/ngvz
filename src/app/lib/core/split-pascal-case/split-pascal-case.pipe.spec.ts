@@ -1,8 +1,8 @@
-import { SplitPascalCaseDirective } from './split-pascal-case.directive';
+import { SplitPascalCasePipe } from './split-pascal-case.pipe';
 
-describe('SplitPascalCaseDirective', () => {
-  it('should create an instance', () => {
-    const directive = new SplitPascalCaseDirective();
-    expect(directive).toBeTruthy();
+describe('SplitPascalCasePipe', () => {
+  it('create an instance', () => {
+    const pipe = new SplitPascalCasePipe();
+    expect(pipe).toBeTruthy();
   });
 });
