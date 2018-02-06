@@ -1,4 +1,8 @@
-# Ngvz
+# ngvz
+
+Data visualizations built with and for Angular.
+
+All template and UI customization is done using Angular templates, bindings, and directives and NOT by D3. Uses a much smaller subset of d3 functions for data manipulation and model building than other libraries.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.7.
 
