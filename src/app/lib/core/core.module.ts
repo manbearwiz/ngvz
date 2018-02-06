@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TransformDirective } from './transform/transform.directive';
-import { SplitPascalCaseDirective } from './split-pascal-case/split-pascal-case.directive';
+import { SplitPascalCasePipe } from './split-pascal-case/split-pascal-case.pipe';
 import { ClipPathToDirective } from './clip-path-to/clip-path-to.directive';
 
 const declarations = [
   TransformDirective,
-  SplitPascalCaseDirective,
+  SplitPascalCasePipe,
   ClipPathToDirective,
 ];
 
@@ -20,6 +20,6 @@ const declarations = [
 export class NgvzCoreModule { }
 export {
   TransformDirective,
-  SplitPascalCaseDirective,
+  SplitPascalCasePipe,
   ClipPathToDirective,
 };
