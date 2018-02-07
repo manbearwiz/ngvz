@@ -3,7 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { RootObject } from './lib/force-directed/force-directed.component';
-import { TreeNode } from './lib/treemap/treemap.component';
+import { TreeNode, LeafNode, isLeafNode } from './lib/treemap/treemap.component';
+import { Datum } from './lib/pie/pie.component';
 
 @Component({
   selector: 'ngvz-root',
@@ -11,6 +12,7 @@ import { TreeNode } from './lib/treemap/treemap.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  data$: Observable<Datum[]>;
   flare2$: Observable<any>;
   links$: Observable<any>;
   nodes$: Observable<any>;
@@ -25,7 +27,8 @@ export class AppComponent implements OnInit {
       .map(flares => flares
         .filter(f => f.value).map(n => ({
           ...n,
-          class: n.id ? n.id.slice(n.id.lastIndexOf('.') + 1) : ''
+          class: n.id ? n.id.slice(n.id.lastIndexOf('.') + 1) : '',
+          package: n.id.slice(0, n.id.lastIndexOf('.'))
         })));
 
     // Force-Directed Data
@@ -35,5 +38,9 @@ export class AppComponent implements OnInit {
 
     // Treemap Data
     this.flare2$ = this.http.get<TreeNode>('./assets/flare2.json');
+
+    // Pie Data
+    this.data$ = this.http.get<{ age: string, population: number }[]>('./assets/data.json')
+      .map(data => data.map(d => ({ id: d.age, value: d.population })));
   }
 }

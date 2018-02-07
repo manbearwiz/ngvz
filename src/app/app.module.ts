@@ -6,13 +6,14 @@ import {
   NgvzCoreModule,
   NgvzBubbleModule,
   NgvzForceDirectedModule,
-  NgvzTreemapModule
+  NgvzTreemapModule,
+  NgvzPieModule
 } from './lib';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgvzCoreModule,
     NgvzBubbleModule,
     NgvzForceDirectedModule,
+    NgvzPieModule,
     NgvzTreemapModule,
   ],
   providers: [],
