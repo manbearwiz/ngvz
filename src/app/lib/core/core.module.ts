@@ -4,12 +4,14 @@ import { TransformDirective } from './transform/transform.directive';
 import { SplitPascalCasePipe } from './split-pascal-case/split-pascal-case.pipe';
 import { ClipPathToDirective } from './clip-path-to/clip-path-to.directive';
 import { ColorScalePipe, NGVZ_ORDINAL_COLORS_PROVIDER } from './color-scale/color-scale.pipe';
+import { FillOrdinalDirective } from './fill-ordinal/fill-ordinal.directive';
 
 const declarations = [
   TransformDirective,
   SplitPascalCasePipe,
   ClipPathToDirective,
   ColorScalePipe,
+  FillOrdinalDirective
 ];
 
 @NgModule({
@@ -17,6 +19,7 @@ const declarations = [
     CommonModule
   ],
   providers: [
+    ColorScalePipe,
     NGVZ_ORDINAL_COLORS_PROVIDER
   ],
   declarations: declarations,
@@ -28,4 +31,5 @@ export {
   SplitPascalCasePipe,
   ClipPathToDirective,
   ColorScalePipe,
+  FillOrdinalDirective
 };

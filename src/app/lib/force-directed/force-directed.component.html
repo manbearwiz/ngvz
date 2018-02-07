@@ -4,7 +4,7 @@
       [attr.y2]="link.target.y"></line>
   </g>
   <g class="nodes">
-    <circle *ngFor="let node of nodes" r="5" [attr.cx]="node.x" [attr.cy]="node.y" [ngStyle]="{'fill': node.group | colorScale:['red','green','blue']}">
+    <circle *ngFor="let node of nodes" r="5" [attr.cx]="node.x" [attr.cy]="node.y" [ngvzFillOrdinal]="node.group" [colors]="['red','green','blue','yellow','orange']">
       <title>{{node.id}}</title>
     </circle>
   </g>
