@@ -9,12 +9,12 @@ import { hierarchy, treemap, treemapResquarify, HierarchyNode } from 'd3-hierarc
 })
 export class TreemapComponent implements OnChanges {
 
+  root: HierarchyNode<TreeNode>;
+
   @Input() nodes: TreeNode;
   @Input() width: number;
   @Input() height: number;
   @Input() innerPadding = 1;
-
-  leaves: HierarchyNode<TreeNode>[];
 
   ngOnChanges() {
     if (!this.width || !this.height || !this.nodes) {
@@ -27,26 +27,34 @@ export class TreemapComponent implements OnChanges {
       .round(true)
       .paddingInner(this.innerPadding);
 
-    const root = hierarchy(this.nodes)
-      .eachBefore((d: any) => { d.data.id = (d.parent ? d.parent.data.id + '.' : '') + d.data.name; })
-      .sum((d: LeafNode) => d.size)
+    this.root = hierarchy(this.nodes)
+      .eachBefore((d) => { d.data.id = (d.parent ? d.parent.data.id + '.' : '') + d.data.name; })
+      .sum(d => (<LeafNode>d).size)
       .sort((a, b) => b.height - a.height || b.value - a.value);
 
-    treeMapper(root);
-
-    this.leaves = root.leaves();
+    treeMapper(this.root);
   }
 
 }
 
 export interface LeafNode {
+  id: string;
   name: string;
   size: number;
 }
 
+export function isLeafNode(x: any): x is LeafNode {
+  return typeof x.size === 'number';
+}
+
 export interface BranchNode {
+  id: string;
   name: string;
-  children: BranchNode | LeafNode[];
+  children: TreeNode[];
+}
+
+export function isBranchNode(x: any): x is BranchNode {
+  return Array.isArray(x.children);
 }
 
 export type TreeNode = LeafNode | BranchNode;

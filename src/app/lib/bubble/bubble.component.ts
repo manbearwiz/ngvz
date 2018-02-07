@@ -8,12 +8,12 @@ import { hierarchy, pack, HierarchyNode } from 'd3-hierarchy';
 })
 export class BubbleComponent implements OnChanges {
 
+  root: HierarchyNode<{ children: { id: string; value: number; }[]; }>;
+
   @Input() nodes: { id: string, value: number }[];
   @Input() width: number;
   @Input() height: number;
   @Input() bubblePadding = 1.5;
-
-  pack: HierarchyNode<{ children: { id: string; value: number; }[]; }>[];
 
   ngOnChanges() {
     if (!this.width || !this.height || !this.nodes) {
@@ -24,11 +24,9 @@ export class BubbleComponent implements OnChanges {
       .size([this.width, this.height])
       .padding(this.bubblePadding);
 
-    const root = hierarchy({ children: this.nodes })
+    this.root = hierarchy({ children: this.nodes })
       .sum((d: any) => d.value);
 
-    customPacker(root);
-
-    this.pack = root.leaves();
+    customPacker(this.root);
   }
 }

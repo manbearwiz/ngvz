@@ -1,9 +1,9 @@
 <svg [attr.width]="width" [attr.height]="height" *ngIf="nodes">
-  <g class="node" *ngFor="let p of pack" ngvzTransform [translateX]="p.x" [translateY]="p.y">
-    <circle [attr.id]="p.data.id" [attr.r]="p.r" style="fill: rgb(230, 85, 13);" #nodeContainer></circle>
+  <g class="node" *ngFor="let l of root.leaves()" ngvzTransform [translateX]="l.x" [translateY]="l.y">
+    <circle [attr.id]="l.data.id" [attr.r]="l.r" [ngStyle]="{'fill': l.data.package | colorScale}" #nodeContainer></circle>
     <text [ngvzClipPathTo]="nodeContainer">
-      <tspan x="0" *ngFor="let word of (p.data.class | splitPascalCase); index as i" [attr.y]="13 + (i - (p.data.class | splitPascalCase).length / 2 - 0.5) * 10">{{word}}</tspan>
+      <tspan x="0" *ngFor="let word of (l.data.class | splitPascalCase); index as i" [attr.y]="13 + (i - (l.data.class | splitPascalCase).length / 2 - 0.5) * 10">{{word}}</tspan>
     </text>
-    <title>{{p.data.id}} {{p.value}}</title>
+    <title>{{l.data.id}} {{l.value}}</title>
   </g>
 </svg>
