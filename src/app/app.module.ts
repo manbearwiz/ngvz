@@ -10,6 +10,8 @@ import {
   NgvzPieModule
 } from './lib';
 import { HttpClientModule } from '@angular/common/http';
+import { NGVZ_ORDINAL_COLORS } from './lib/core/color-scale/color-scale.pipe';
+import { schemeSet3 } from 'd3-scale-chromatic';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,7 @@ import { HttpClientModule } from '@angular/common/http';
     NgvzPieModule,
     NgvzTreemapModule,
   ],
-  providers: [],
+  providers: [{ provide: NGVZ_ORDINAL_COLORS, useValue: [...schemeSet3] }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
