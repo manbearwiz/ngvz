@@ -1,0 +1,12 @@
+<svg [attr.width]="width" [attr.height]="height" *ngIf="root">
+  <g ngvzTransform [translateX]="width / 2 + 40" [translateY]="height / 2 + 90">
+    <path class="link" *ngFor="let link of root.links()" [attr.d]="toRadial(link)"></path>
+    <g class="node" *ngFor="let descendant of root.descendants()" ngvzTransform [translate]="radialPoint(descendant.x,descendant.y)">
+      <circle r="2.5" [ngvzFillOrdinal]="descendant.id.substring(0, descendant.id.lastIndexOf('.') + 1)"></circle>
+      <text dy="0.31em" [attr.x]="descendant.x < pi === !descendant.children ? 6 : -6" [attr.text-anchor]="descendant.x < pi === !descendant.children ? 'start' : 'end'"
+      ngvzTransform [rotate]="(descendant.x < pi ? descendant.x - pi / 2 : descendant.x + pi / 2) * 180 / pi">
+        {{descendant.id.substring(descendant.id.lastIndexOf(".") + 1)}}
+      </text>
+    </g>
+  </g>
+</svg>

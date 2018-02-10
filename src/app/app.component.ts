@@ -12,6 +12,7 @@ import { Datum } from './lib/pie/pie.component';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
+  flare3$: Observable<{ id: string; value: number; }[]>;
   data$: Observable<Datum[]>;
   flare2$: Observable<any>;
   links$: Observable<any>;
@@ -42,5 +43,9 @@ export class AppComponent implements OnInit {
     // Pie Data
     this.data$ = this.http.get<{ age: string, population: number }[]>('./assets/data.json')
       .map(data => data.map(d => ({ id: d.age, value: d.population })));
+
+
+    // Radial-Tree Data
+    this.flare3$ = this.http.get<Array<{ id: string, value: number }>>('./assets/flare.json');
   }
 }
