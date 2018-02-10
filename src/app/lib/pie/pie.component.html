@@ -2,7 +2,7 @@
   <g ngvzTransform [translateX]="width/2" [translateY]="height/2">
     <g class="arc" *ngFor="let o of output">
       <path [attr.d]="path(o)" [ngvzFillOrdinal]="o.data.id"></path>
-      <text ngvzTransform [translateX]="label(o)[0] " [translateY]="label(o)[1]" dy="0.35em">{{o.data.id}}</text>
+      <text ngvzTransform [translate]="label(o)" dy="0.35em">{{o.data.id}}</text>
     </g>
   </g>
 </svg>
