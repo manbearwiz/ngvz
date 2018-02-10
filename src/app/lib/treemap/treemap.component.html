@@ -4,6 +4,6 @@
     <text [ngvzClipPathTo]="nodeContainer">
       <tspan x="4" *ngFor="let word of (l.data.name | splitPascalCase); index as i" [attr.y]="13 + i * 10">{{word}}</tspan>
     </text>
-    <title>{{l.data.id}} {{l.value}} {{l.data.id.replace('.'+ l.data.name, "")}}</title>
+    <title>{{l.data.id}} {{l.value}}</title>
   </g>
 </svg>
