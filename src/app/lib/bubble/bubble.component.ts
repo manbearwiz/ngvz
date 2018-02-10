@@ -24,8 +24,8 @@ export class BubbleComponent implements OnChanges {
       .size([this.width, this.height])
       .padding(this.bubblePadding);
 
-    this.root = hierarchy({ children: this.nodes })
-      .sum((d: any) => d.value);
+    this.root = hierarchy({ children: this.nodes, value: null })
+      .sum(d => d.value);
 
     customPacker(this.root);
   }
