@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SplitPascalCasePipe implements PipeTransform {
 
-  transform(value: string, args?: any): string[] {
+  transform(value: string): string[] {
     if (!value) { return [String(value)]; }
     if (typeof value !== 'string') {
       throw new TypeError();
