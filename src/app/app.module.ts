@@ -13,6 +13,7 @@ import {
 import { HttpClientModule } from '@angular/common/http';
 import { NGVZ_ORDINAL_COLORS } from './lib/core/color-scale/color-scale.pipe';
 import { schemeSet3 } from 'd3-scale-chromatic';
+import { NgvzStackedBarModule } from './lib/stacked-bar';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { schemeSet3 } from 'd3-scale-chromatic';
     NgvzPieModule,
     NgvzTreemapModule,
     NgvzRadialTreeModule,
+    NgvzStackedBarModule,
   ],
   providers: [{ provide: NGVZ_ORDINAL_COLORS, useValue: [...schemeSet3] }],
   bootstrap: [AppComponent]
