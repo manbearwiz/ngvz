@@ -8,7 +8,8 @@ import {
   NgvzForceDirectedModule,
   NgvzTreemapModule,
   NgvzPieModule,
-  NgvzRadialTreeModule
+  NgvzRadialTreeModule,
+  NgvzHistogramModule,
 } from './lib';
 import { HttpClientModule } from '@angular/common/http';
 import { NGVZ_ORDINAL_COLORS } from './lib/core/color-scale/color-scale.pipe';
@@ -29,6 +30,7 @@ import { NgvzStackedBarModule } from './lib/stacked-bar';
     NgvzTreemapModule,
     NgvzRadialTreeModule,
     NgvzStackedBarModule,
+    NgvzHistogramModule
   ],
   providers: [{ provide: NGVZ_ORDINAL_COLORS, useValue: [...schemeSet3] }],
   bootstrap: [AppComponent]

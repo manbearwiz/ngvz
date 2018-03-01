@@ -1,0 +1,28 @@
+.bar rect {
+  fill: steelblue;
+}
+
+.bar text {
+  fill: #fff;
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.axis {
+  fill: none;
+  font-size: 10px;
+  font-family: sans-serif;
+  text-anchor: middle;
+  >.domain {
+    stroke: #000;
+  }
+  >.tick {
+    opacity: 1;
+    >line {
+      stroke: #000
+    }
+    >text {
+      fill: #000
+    }
+  }
+}
