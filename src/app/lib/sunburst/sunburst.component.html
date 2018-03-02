@@ -1,0 +1,7 @@
+<svg [attr.width]="width" [attr.height]="height">
+  <g ngvzTransform [translateX]="width / 2" [translateY]="height / 2">
+    <path *ngFor="let d of descendants" (click)="selected(d)" [attr.d]="this.arc(d)" [ngvzFillOrdinal]="(d.children ? d : d.parent).data.name">
+      <title>{{d.data.name}} {{d.value}}</title>
+    </path>
+  </g>
+</svg>
