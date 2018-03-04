@@ -1,8 +1,10 @@
 <svg [attr.width]="width" [attr.height]="height">
   <g ngvzTransform [translateX]="margin.left" [translateY]="margin.top">
     <g class="bar" *ngFor="let bin of bins" ngvzTransform [translateX]="x(bin.x0)" [translateY]="y(bin.length)">
-      <rect x="1" [attr.width]="x(bin.x1 - bin.x0) - 1" [attr.height]="innerHeight - y(bin.length)"></rect>
-      <text dy=".75em" y="6" [attr.x]="x(bin.x1 - bin.x0) / 2">{{bin.length}}</text>
+      <ng-container *ngIf="bin.length">
+        <rect x="1" [attr.width]="x(bin.x1 - bin.x0) - 1" [attr.height]="innerHeight - y(bin.length)"></rect>
+        <text dy=".75em" y="6" [attr.x]="x(bin.x1 - bin.x0) / 2">{{bin.length}}</text>
+      </ng-container>
     </g>
     <g class="axis axis--x" ngvzTransform [translateY]="innerHeight">
       <path class="domain" d="M0.5,6V0.5H900.5V6"></path>
