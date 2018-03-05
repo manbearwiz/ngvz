@@ -19,18 +19,12 @@ export class PieComponent implements OnChanges {
   @Input() outerPadding = 10;
   @Input() innerPadding = 100;
 
-  constructor() { }
-
   ngOnChanges() {
     if (!this.width || !this.height || !this.data) {
       return;
     }
 
     this.radius = Math.min(this.width, this.height) / 2;
-
-    const pieBuilder = pie<Datum>()
-      .sort(null)
-      .value(d => d.value);
 
     this.path = arc()
       .outerRadius(this.radius - this.outerPadding)
@@ -40,6 +34,10 @@ export class PieComponent implements OnChanges {
       .outerRadius(this.radius - 40)
       .innerRadius(this.radius - 40)
       .centroid;
+
+    const pieBuilder = pie<Datum>()
+      .sort(null)
+      .value(d => d.value);
 
     this.output = pieBuilder(this.data);
   }
