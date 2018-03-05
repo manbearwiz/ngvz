@@ -5,7 +5,7 @@ import { Directive, Input, ElementRef, Renderer, OnInit, OnChanges, AfterViewIni
 })
 export class ClipPathToDirective implements AfterViewInit {
 
-  @Input('ngvzClipPathTo') ngvzClipPathTo: SVGGraphicsElement;
+  @Input() ngvzClipPathTo: SVGGraphicsElement;
 
   constructor(private el: ElementRef, private renderer: Renderer) { }
 
