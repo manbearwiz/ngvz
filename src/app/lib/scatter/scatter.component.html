@@ -1,0 +1,8 @@
+<svg [attr.width]="width" [attr.height]="height">
+  <g ngvzTransform [translateX]="margin.left" [translateY]="margin.top">
+    <g ngvz-axis class="x axis" [scale]="x" position="bottom" ngvzTransform [translateY]="innerHeight"></g>
+    <g ngvz-axis class="y axis" [scale]="y" position="left" ></g>
+    <path *ngFor="let d of data" class="point" [ngvzSymbol]="d" [symbolType]="symbolType" ngvzTransform [translateX]="x(d.x)"
+      [translateY]="y(d.y)"></path>
+  </g>
+</svg>
