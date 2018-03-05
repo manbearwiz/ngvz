@@ -1,0 +1,18 @@
+<svg>
+  <g class="tick" *ngFor="let tick of scale.ticks()" ngvzTransform [translateX]="vertical ? 0 : scale(tick)" [translateY]="vertical ? scale(tick) : 0">
+    <line [attr.x2]="vertical ? k * tickSizeInner : 0" [attr.y2]="vertical ? 0 : tickSizeInner"></line>
+    <text [attr.dy]="position === 'top' ? '0em' : position === 'bottom' ? '0.71em' : '0.32em'" [attr.x]="vertical ? -9 : 0" [attr.y]="vertical ? 0 : 9" [style.text-anchor]="position === 'right' ? 'start' : position === 'left' ? 'end' : 'middle'">{{tick}}</text>
+  </g>
+  <path class="domain" [attr.d]="domainPath"></path>
+</svg>
+
+
+<!--
+      <g class="axis axis--x" ngvzTransform [translateY]="innerHeight">
+      <path class="domain" d="M0.5,6V0.5H900.5V6"></path>
+      <g class="tick" *ngFor="let tick of x.ticks()" ngvzTransform [translateX]="x(tick) + 0.5">
+        <line y2="6"></line>
+        <text y="9" dy="0.71em">{{tick}}</text>
+      </g>
+    </g>
+  -->
