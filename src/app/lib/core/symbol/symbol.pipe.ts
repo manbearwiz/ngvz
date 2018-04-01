@@ -17,8 +17,8 @@ export class SymbolPipe implements PipeTransform {
     this.symbol = symbol();
   }
 
-  transform(value: Coordinates, symbolType: SymbolType = this.defaultSymbolType): string {
-    return this.symbol.type(symbolType)(value);
+  transform(value: Coordinates, symbolType: SymbolType = this.defaultSymbolType, size: number | ((any) => number) = 64): string {
+    return this.symbol.type(symbolType).size(size as any)(value);
   }
 }
 

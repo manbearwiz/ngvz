@@ -8,11 +8,13 @@ import { SymbolType } from 'd3-shape';
 export class SymbolDirective implements OnChanges {
   @Input() ngvzSymbol: Coordinates;
   @Input() symbolType: SymbolType;
+  @Input() symbolSize: number | ((any) => number);
+
   @HostBinding('attr.d') d: string;
 
   constructor(private symbolPipe: SymbolPipe) { }
 
   ngOnChanges() {
-    this.d = this.symbolPipe.transform(this.ngvzSymbol, this.symbolType);
+    this.d = this.symbolPipe.transform(this.ngvzSymbol, this.symbolType, this.symbolSize);
   }
 }
