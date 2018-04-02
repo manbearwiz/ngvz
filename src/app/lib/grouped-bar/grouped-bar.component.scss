@@ -1,0 +1,12 @@
+.axis .domain {
+  display: none;
+}
+
+text {
+  font-size: 10px;
+  font-family: sans-serif;
+}
+
+:host /deep/ path.domain {
+  stroke: rgba(0, 0, 0, 0);
+}

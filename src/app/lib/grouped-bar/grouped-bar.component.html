@@ -1,0 +1,25 @@
+<svg [attr.width]="width" [attr.height]="height" *ngIf="model">
+  <g ngvzTransform [translateX]="margin.left" [translateY]="margin.top">
+    <g>
+      <g *ngFor="let m of model" ngvzTransform [translateX]="x0(m.name)">
+        <rect *ngFor="let v of keys" [attr.x]="x1(v)" [attr.y]="y(m.values.get(v))" [attr.width]="x1.bandwidth()" [attr.height]="innerHeight - y(m.values.get(v))"
+          [ngvzFillOrdinal]="v" [colors]="colors"></rect>
+      </g>
+    </g>
+
+    <g ngvz-axis ngvzTransform [translateY]="innerHeight" class="x axis" [scale]="x0" position="bottom" [tickOffset]="x0.bandwidth() / 2"></g>
+
+    <g ngvz-axis class="y axis" [scale]="y" position="left">
+      <ng-container *ngvzTick="let name">{{name / 1000000}}M</ng-container>
+    </g>
+
+    <text x="2" y="0.5" dy="0.32em" fill="#000" font-weight="bold" text-anchor="start">Population</text>
+
+    <g text-anchor="end">
+      <g *ngFor="let v of keys.reverse(); index as i;" ngvzTransform [translateY]="i * 20">
+        <rect x="881" width="19" height="19" [ngvzFillOrdinal]="v" [colors]="colors"></rect>
+        <text x="876" y="9.5" dy="0.32em">{{v}}</text>
+      </g>
+    </g>
+  </g>
+</svg>

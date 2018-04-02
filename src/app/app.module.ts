@@ -10,13 +10,15 @@ import {
   NgvzPieModule,
   NgvzRadialTreeModule,
   NgvzHistogramModule,
+  NgvzGroupedBarModule,
+  NgvzStackedBarModule,
+  NgvzSunburstModule,
+  NgvzScatterModule,
 } from './lib';
 import { HttpClientModule } from '@angular/common/http';
 import { NGVZ_ORDINAL_COLORS } from './lib/core/color-scale/color-scale.pipe';
 import { schemeSet3 } from 'd3-scale-chromatic';
-import { NgvzStackedBarModule } from './lib/stacked-bar';
-import { NgvzSunburstModule } from './lib/sunburst';
-import { NgvzScatterModule } from './lib/scatter';
+import { SvgComponentsModule } from './lib/svg-components';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { NgvzScatterModule } from './lib/scatter';
   imports: [
     BrowserModule,
     HttpClientModule,
+    SvgComponentsModule,
     NgvzCoreModule,
     NgvzBubbleModule,
     NgvzForceDirectedModule,
@@ -32,6 +35,7 @@ import { NgvzScatterModule } from './lib/scatter';
     NgvzTreemapModule,
     NgvzRadialTreeModule,
     NgvzStackedBarModule,
+    NgvzGroupedBarModule,
     NgvzHistogramModule,
     NgvzSunburstModule,
     NgvzScatterModule,
