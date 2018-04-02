@@ -1,7 +1,7 @@
-<svg [attr.width]="width" [attr.height]="height" *ngIf="model">
+<svg [attr.width]="width" [attr.height]="height" *ngIf="data">
   <g ngvzTransform [translateX]="margin.left" [translateY]="margin.top">
     <g>
-      <g *ngFor="let m of model" ngvzTransform [translateX]="x0(m.name)">
+      <g *ngFor="let m of data" ngvzTransform [translateX]="x0(m.name)">
         <rect *ngFor="let v of keys" [attr.x]="x1(v)" [attr.y]="y(m.values.get(v))" [attr.width]="x1.bandwidth()" [attr.height]="innerHeight - y(m.values.get(v))"
           [ngvzFillOrdinal]="v" [colors]="colors"></rect>
       </g>
