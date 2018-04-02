@@ -5,3 +5,7 @@ export * from './pie';
 export * from './treemap';
 export * from './radial-tree';
 export * from './histogram';
+export * from './grouped-bar';
+export * from './stacked-bar';
+export * from './sunburst';
+export * from './scatter';
