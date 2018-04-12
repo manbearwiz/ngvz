@@ -9,3 +9,4 @@ export * from './grouped-bar';
 export * from './stacked-bar';
 export * from './sunburst';
 export * from './scatter';
+export * from './chord';

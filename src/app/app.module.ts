@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import {
   NgvzCoreModule,
@@ -14,6 +13,7 @@ import {
   NgvzStackedBarModule,
   NgvzSunburstModule,
   NgvzScatterModule,
+  NgvzChordModule,
 } from './lib';
 import { HttpClientModule } from '@angular/common/http';
 import { NGVZ_ORDINAL_COLORS } from './lib/core/color-scale/color-scale.pipe';
@@ -39,6 +39,7 @@ import { SvgComponentsModule } from './lib/svg-components';
     NgvzHistogramModule,
     NgvzSunburstModule,
     NgvzScatterModule,
+    NgvzChordModule,
   ],
   providers: [{ provide: NGVZ_ORDINAL_COLORS, useValue: [...schemeSet3] }],
   bootstrap: [AppComponent]

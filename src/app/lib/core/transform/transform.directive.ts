@@ -11,12 +11,15 @@ export class TransformDirective implements OnChanges {
   @HostBinding('attr.transform') transform: string;
 
   ngOnChanges() {
-    if (this.translate) {
-      this.transform = `translate(${this.translate[0]}, ${this.translate[1]})`;
-    } else if (this.rotate) {
-      this.transform = `rotate(${this.rotate})`;
-    } else {
-      this.transform = `translate(${this.translateX || 0}, ${this.translateY || 0})`;
+    this.transform = '';
+    if (this.rotate) {
+      this.transform += `rotate(${this.rotate})`;
     }
+    if (this.translate) {
+      this.transform += `translate(${this.translate[0]}, ${this.translate[1]})`;
+    } else {
+      this.transform += `translate(${this.translateX || 0}, ${this.translateY || 0})`;
+    }
+
   }
 }

@@ -1,0 +1,17 @@
+<svg [attr.width]="width" [attr.height]="height">
+  <g ngvzTransform [translateX]="width/2" [translateY]="height/2">
+    <g class="groups">
+      <g *ngFor="let group of chords.groups">
+        <path [attr.d]="arc(group)" [ngvzFillOrdinal]="group.index" [colors]="colors"></path>
+        <g class="group-tick" *ngFor="let tick of groupTicks(group)" ngvzTransform [rotate]="tick.angle * 180 / Math.PI - 90" [translateX]="outerRadius">
+          <line x2="6"></line>
+          <text *ngIf="tick.value % 5e3 === 0" x="8" [attr.transform]="tick.angle > Math.PI ? 'rotate(180) translate(-16)' : null"
+            [ngStyle]="{'text-anchor': tick.angle > Math.PI ? 'end' : null}" dy=".35em">{{tick.value | formatPrefix}}</text>
+        </g>
+      </g>
+    </g>
+    <g class="ribbons">
+      <path *ngFor="let chord of chords" [attr.d]="ribbon(chord)" [ngvzFillOrdinal]="chord.target.index" [colors]="colors"></path>
+    </g>
+  </g>
+</svg>
